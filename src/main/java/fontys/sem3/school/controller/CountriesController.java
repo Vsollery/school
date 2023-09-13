@@ -34,6 +34,12 @@ public class CountriesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PutMapping("{id}")
+    public ResponseEntity<Void> updateCountry(@PathVariable("id") long id, @RequestBody @Valid CountryEntity request){
+        request.setId(id);
+        getCountriesUseCase.updateCountry(request);
+        return ResponseEntity.noContent().build();
+    }
 
 
 
